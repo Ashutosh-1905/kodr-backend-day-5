@@ -1,0 +1,106 @@
+/* Posts page styles - minimal, responsive, uses theme tokens */
+.posts-root {
+    padding: var(--space-5) var(--space-4) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.posts-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.posts-title {
+    margin: 0;
+}
+
+.posts-subtitle {
+    margin: 0;
+}
+
+.empty {
+    opacity: .6;
+    font-size: var(--font-size-sm);
+}
+
+.posts-grid {
+    --min: 180px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
+    gap: var(--space-4);
+}
+
+.post-card {
+    position: relative;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+}
+
+.post-media {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.post-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--color-bg);
+    transition: filter var(--transition-fast), transform var(--transition-fast);
+}
+
+.post-img:is(:focus-visible, .is-fallback) {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+
+.post-card:hover .post-img {
+    filter: brightness(.95);
+    transform: scale(1.01);
+}
+
+.post-caption {
+    padding: var(--space-3) var(--space-3) var(--space-3);
+    font-size: var(--font-size-sm);
+    line-height: 1.35;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    /* future standard */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 540px) {
+    .posts-root {
+        padding-top: var(--space-6);
+    }
+}
+
+@media (min-width: 860px) {
+    .posts-grid {
+        --min: 220px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .post-img {
+        transition: none;
+    }
+}
