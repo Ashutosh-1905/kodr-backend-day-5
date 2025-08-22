@@ -3,24 +3,24 @@ const app = express();
 
 const multer = require("multer");
 
-// const cors = require("cors");
+const cors = require("cors");
 const uploadFile = require("./services/post.service");
 const postModel = require("./models/post.model");
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 
-app.post("/posts",upload.single("avatar"), async (req, res) => {
+app.post("/posts", upload.single("avatar"), async (req, res) => {
     try {
         const caption = req.body.caption;
         const file = req.file.buffer;
         const result = await uploadFile(file, "test");
         if (!result) {
             return res.status(500).json({
-                message:"result error"
+                message: "result error"
             })
         }
         const post = await postModel.create({
@@ -30,13 +30,30 @@ app.post("/posts",upload.single("avatar"), async (req, res) => {
 
         res.json({
             message: "post Created successfully",
-            post:post
+            post: post
         })
     } catch (err) {
         console.log(err);
         res.status(500).json({
             message: err.message
         });
+    }
+});
+
+app.get("/posts", async (req, res) => {
+    try {
+        const posts = await postModel.find();
+         res.json({
+           message: "posts fetched successfully",
+           posts: posts,
+         });
+
+        
+    } catch (err) {
+        console.log(err);
+           res.status(500).json({
+             message: err.message,
+           });
     }
 })
 
