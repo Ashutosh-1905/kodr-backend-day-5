@@ -23,7 +23,8 @@ app.post("/posts", upload.single("avatar"), async (req, res) => {
                 message: "result error"
             })
         }
-        const post = await postModel.create({
+        const post = await p
+        ostModel.create({
             caption: caption,
             url: result.url
         });

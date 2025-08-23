@@ -24,6 +24,7 @@ const Home = () => {
 
   const handleFileChange = (file) => {};
 
+
   const onDrag = (e) => {
     e.preventDefault();
     e.stopPropagation();
