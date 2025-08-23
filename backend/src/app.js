@@ -16,7 +16,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 
-app.post("/posts", upload.single("avatar"), async (req, res) => {
+app.post("/api/posts", upload.single("avatar"), async (req, res) => {
     try {
         const caption = req.body.caption;
         const file = req.file.buffer;
@@ -44,7 +44,7 @@ app.post("/posts", upload.single("avatar"), async (req, res) => {
     }
 });
 
-app.get("/posts", async (req, res) => {
+app.get("/api/posts", async (req, res) => {
     try {
         const posts = await postModel.find();
         res.json({
