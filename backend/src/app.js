@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 
 const multer = require("multer");
 
@@ -8,6 +9,8 @@ const uploadFile = require("./services/post.service");
 const postModel = require("./models/post.model");
 app.use(cors());
 app.use(express.json());
+
+app.use(express.static("public"));
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -44,18 +47,23 @@ app.post("/posts", upload.single("avatar"), async (req, res) => {
 app.get("/posts", async (req, res) => {
     try {
         const posts = await postModel.find();
-         res.json({
-           message: "posts fetched successfully",
-           posts: posts,
-         });
+        res.json({
+            message: "posts fetched successfully",
+            posts: posts,
+        });
 
         
     } catch (err) {
         console.log(err);
-           res.status(500).json({
-             message: err.message,
-           });
+        res.status(500).json({
+            message: err.message,
+        });
     }
-})
+});
+
+
+app.get("*name", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "/public/index.html"))
+});
 
 module.exports = app;
