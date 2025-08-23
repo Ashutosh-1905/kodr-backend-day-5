@@ -24,7 +24,7 @@ const Home = () => {
       })
   };
 
-  const handleFileChange = (file) => {};
+  const handleFileChange = (file) => { };
 
 
   const onDrag = (e) => {
@@ -91,7 +91,7 @@ const Home = () => {
             <button type="submit" className="btn btn-primary">
               Post
             </button>
-                  </div>
+          </div>
                   
         </form>
       </section>
