@@ -8,10 +8,12 @@ const Posts = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3000/posts").then(response => {
+        axios
+          .get("https://kodr-backend-day-5.onrender.com/api/posts")
+          .then((response) => {
             console.log(response.data);
-            setPosts(response.data.posts)
-        });
+            setPosts(response.data.posts);
+          });
     }, [])
   return (
     <main className="posts-root" aria-labelledby="postsHeading">

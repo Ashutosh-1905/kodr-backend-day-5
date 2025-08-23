@@ -16,10 +16,12 @@ const Home = () => {
     formData.append("caption", caption);
     formData.append("avatar", file);
 
-    axios.post("http://localhost:3000/posts", formData).then((response) => {
-      console.log(response.data);
-      navigate("/posts");
-    });
+    axios
+      .post("https://kodr-backend-day-5.onrender.com/api/posts", formData)
+      .then((response) => {
+        console.log(response.data);
+        navigate("/posts");
+      })
   };
 
   const handleFileChange = (file) => {};
