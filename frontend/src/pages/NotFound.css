@@ -1,0 +1,8 @@
+/* Minimal 404 page styles */
+.notfound-root { min-height: 100dvh; display: flex; align-items: center; justify-content: center; padding: var(--space-6) var(--space-4); }
+.notfound-content { max-width: 520px; text-align: center; display: flex; flex-direction: column; gap: var(--space-4); }
+.notfound-code { font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 700; letter-spacing: -2px; line-height: 1; background: linear-gradient(90deg,var(--color-accent),var(--color-accent-hover)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.notfound-title { font-size: 1.75rem; font-weight: 600; letter-spacing: -.5px; }
+.notfound-text { opacity: .7; font-size: var(--font-size-base); }
+.notfound-actions { display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap; }
+@media (prefers-color-scheme: dark) { .notfound-code { filter: brightness(1.1); } }

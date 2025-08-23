@@ -3,10 +3,10 @@ import AppRoutes from './AppRoutes'
 
 const App = () => {
   return (
-    <>
+    <div className='center'>
       <AppRoutes />
       
-    </>
+    </div>
   )
 }
 
